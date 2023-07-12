@@ -1,0 +1,144 @@
+.landing-container {
+    padding: 55px 266px 133px 266px;
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    justify-content: center;
+}
+
+.landing-container h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    gap: 300px;
+    margin-bottom: 50px;
+}
+
+.header-text {
+    width: 40%;
+    font-size: 18px;
+}
+
+.now-airing-info {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+}
+
+.now-airing-info p {
+    /* make it to the right side */
+    margin-left: 800px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.see-other-movies {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 10px;
+    margin-bottom: 60px;
+    padding: 1rem;
+    font-size: 20px;
+    color: white;
+    background-color: var(--darkgreen-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.see-other-movies:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.now-airing-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media (min-width: 1618px) {
+    .landing-container {
+        padding: 55px 266px 133px 266px;
+    }
+
+    .header-container {
+        gap: 300px;
+    }
+
+    .now-airing-info p {
+        margin-left: 800px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1618px) {
+    .landing-container {
+        padding: 55px 80px 133px 80px;
+    }
+
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .now-airing-info p {
+        margin-left: 0;
+        text-align: right;
+        margin-top: 0;
+    }
+
+    .see-other-movies {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing-container {
+        padding: 30px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-text {
+        width: 100%;
+    }
+
+    .now-airing-info {
+        flex-direction: column;
+    }
+
+    .now-airing-info p {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .see-other-movies {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 0.5rem;
+    }
+}
