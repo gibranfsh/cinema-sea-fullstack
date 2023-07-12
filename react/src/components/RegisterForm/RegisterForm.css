@@ -1,0 +1,207 @@
+.register-container {
+    padding: 155px 533px 288px 533px;
+    /* top right bottom left */
+    text-align: center;
+}
+
+.register-form {
+    width: 424px;
+    height: 586px;
+    margin: 0 auto;
+}
+
+.register-form h1 {
+    text-align: left;
+    font-family: Libre Franklin;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 31px;
+    margin-bottom: 64px;
+}
+
+.form-username {
+    display: flex;
+    flex-direction: column;
+    font-family: Libre Franklin;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 31px;
+    margin-bottom: 32px;
+}
+
+.form-username label {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.form-username input {
+    width: 349px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1.5px solid #D1D1D1;
+    background: #FFF;
+    padding: 3px;
+}
+
+.form-password {
+    display: flex;
+    flex-direction: column;
+    font-family: Libre Franklin;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 31px;
+    margin-bottom: 32px;
+}
+
+.form-password label {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.form-password input {
+    width: 349px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1.5px solid #D1D1D1;
+    background: #FFF;
+    margin-bottom: 3px;
+    padding: 3px;
+}
+
+.form-name {
+    display: flex;
+    flex-direction: column;
+    font-family: Libre Franklin;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 31px;
+    margin-bottom: 32px;
+}
+
+.form-name label {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.form-name input {
+    width: 349px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1.5px solid #D1D1D1;
+    background: #FFF;
+    margin-bottom: 3px;
+    padding: 3px;
+}
+
+.form-birthdate {
+    display: flex;
+    flex-direction: column;
+    font-family: Libre Franklin;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 31px;
+}
+
+.form-birthdate label {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.form-birthdate input {
+    width: 349px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1.5px solid #D1D1D1;
+    background: #FFF;
+    margin-bottom: 3px;
+    padding: 3px;
+}
+
+.form-button {
+    width: 349px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--darkgreen-color);
+    color: #FFF;
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-right: 13px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background: #004a4a;
+}
+
+.get-started-link {
+    color: var(--linkblue-color);
+    cursor: pointer;
+}
+
+.get-started-link:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .register-container {
+      padding: 100px 40px;
+    }
+  
+    .register-form {
+      max-width: 500px;
+    }
+  
+    .register-form h1 {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+  
+    .form-username,
+    .form-name,
+    .form-birthdate,
+    .form-password {
+      margin-bottom: 24px;
+    }
+  
+    .form-button {
+      margin-top: 100px;
+    }
+  }
+
+  /* Mobile */
+@media screen and (max-width: 768px) {
+    .register-container {
+        padding: 50px 20px;
+    }
+
+    .register-form {
+        height: auto;
+    }
+
+    .form-username,
+    .form-name,
+    .form-birthdate,
+    .form-password {
+        margin-bottom: 20px;
+    }
+
+    .form-button {
+        margin-top: 50px;
+    }
+}
