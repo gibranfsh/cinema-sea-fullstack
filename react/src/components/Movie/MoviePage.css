@@ -1,0 +1,49 @@
+.moviepage-container {
+    padding: 55px 266px 133px 266px;
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    justify-content: center;
+}
+
+.moviepage-container h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.available-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Responsive styles for screens smaller than 768px (e.g., phones) */
+@media (max-width: 767px) {
+    .moviepage-container {
+        padding: 30px 10px;
+    }
+
+    .moviepage-container h1 {
+        margin-bottom: 20px;
+    }
+
+    .available-movies {
+        justify-content: center;
+    }
+}
+
+/* Responsive styles for screens between 768px and 1199px (e.g., tablets) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .moviepage-container {
+        padding: 40px 80px;
+    }
+
+    .moviepage-container h1 {
+        margin-bottom: 40px;
+    }
+
+    .available-movies {
+        justify-content: center;
+    }
+}
