@@ -1,0 +1,122 @@
+.ticket-container {
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    width: 442px;
+    height: 317px;
+    margin-left: 1rem;
+    background: rgba(223, 223, 223, 0.07);
+    box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.ticket-container:hover {
+    transform: scale(1.05);
+}
+
+.movie-poster {
+    width: 28%;
+    min-height: 85px;
+    max-height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ticket-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--darkgreen-color);
+    width: 100%;
+    padding: 0rem 1rem;
+}
+
+.ticket-header h3 {
+    /* background: var(--darkgreen-color) but 10% */
+    background: rgba(0, 128, 0, 0.1);
+    font-size: 18px;
+    padding: 0.2rem 1.2rem 0.2rem 1.13rem;
+    border-radius: 20px;
+}
+
+.ticket-body {
+    display: flex;
+    flex-direction: row;
+    color: var(--darkgreen-color);
+    gap: 1rem;
+    width: 100%;
+    padding: 0rem 1rem;
+    margin: 0.3rem 0rem;
+}
+
+.ticket-body-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.ticket-body-info-bottom {
+    font-size: 18px;
+}
+
+.line {
+    margin: 0.5rem 0rem;
+}
+
+.ticket-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0rem 1rem;
+}
+
+.total-price {
+    display: flex;
+    flex-direction: column;
+    color: var(--darkgreen-color);
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.show-barcode {
+    border-radius: 11px;
+    padding: 0.5rem;
+    font-size: 13px;
+    color: white;
+    background-color: var(--darkgreen-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.show-barcode:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.cancel-ticket {
+    border-radius: 11px;
+    padding: 0.5rem;
+    font-size: 13px;
+    color: white;
+    background-color: var(--darkred-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-ticket:hover {
+    background-color: var(--darkred-hover);
+}

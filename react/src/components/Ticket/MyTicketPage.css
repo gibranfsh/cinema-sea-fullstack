@@ -1,0 +1,24 @@
+.myticket-container {
+    padding: 55px 266px 288px 266px;
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    /* column : vertical */
+    justify-content: center;
+    gap: 20px;
+}
+
+.myticket-container h1 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticket-components {
+    display: flex;
+    padding: 0rem 10rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}

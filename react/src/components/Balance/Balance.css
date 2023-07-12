@@ -1,0 +1,149 @@
+.balance-container {
+    padding: 55px 266px 288px 266px;
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    /* column : vertical */
+    justify-content: center;
+    gap: 20px;
+}
+
+.balance-top-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.balance-top-up {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 5px;
+    margin-bottom: 60px;
+    padding: 0.5rem;
+    font-size: 15px;
+    color: white;
+    background-color: var(--darkgreen-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.balance-top-up:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.vector {
+    width: 15px;
+    height: 15;
+    padding-top: 3px;
+}
+
+.balance-withdraw {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 5px;
+    margin-bottom: 60px;
+    padding: 0.5rem;
+    font-size: 15px;
+    color: white;
+    background-color: var(--darkgreen-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.balance-withdraw:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.withdraw {
+    width: 15px;
+    height: 15;
+    padding-top: 3px;
+}
+
+.top-up-cancel-btn {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 5px;
+    margin-bottom: 60px;
+    padding: 0.5rem;
+    font-size: 15px;
+    color: white;
+    background-color: var(--darkred-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.top-up-cancel-btn:hover {
+    background-color: var(--darkred-hover);
+}
+
+.disabled-button {
+    display: flex;
+    flex-direction: row;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 5px;
+    margin-bottom: 60px;
+    padding: 0.5rem;
+    font-size: 15px;
+    color: white;
+    background-color: var(--gray-color);
+}
+
+.buttons {
+    margin-bottom: -50px;
+}
+
+.top-up-form,
+.withdraw-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.withdraw-form input, .top-up-form input {
+    width: 349px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1.5px solid #D1D1D1;
+    background: #FFF;
+    margin-bottom: 3px;
+    padding: 3px;
+}
+
+.top-up-submit-btn,
+.withdraw-submit-btn {
+    width: 10%;
+    /* row : horizontal */
+    justify-content: space-between;
+    border-radius: 11px;
+    gap: 5px;
+    margin-bottom: 60px;
+    padding: 0.5rem;
+    font-size: 15px;
+    color: white;
+    background-color: var(--darkgreen-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.top-up-submit-btn:hover,
+.withdraw-submit-btn:hover {
+    background-color: var(--darkgreen-hover);
+}
