@@ -1,0 +1,93 @@
+.movieinfo-container {
+    padding: 55px 266px 133px 266px;
+    display: flex;
+    flex-direction: column;
+    /* column : vertical */
+    justify-content: center;
+}
+
+.movieinfo-header h1 {
+    margin: 1rem 0;
+}
+
+.underlined-text {
+    text-decoration: underline;
+}
+
+.movie-poster {
+    /* scale smaller */
+    width: 300px;
+    height: 450px;
+}
+
+.film-details {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.film-details-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    /* make a square border with color gray */
+    border: 1px solid #D1D1D1;
+}
+
+.film-details-middle {
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+}
+
+.see-trailer-btn {
+    width: 200px;
+    height: 40px;
+    background-color: var(--darkgreen-color);
+    border-radius: 11px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0.45rem 0.1rem 0.1rem 3.4rem;
+    margin-top: 30px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.see-trailer-btn:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.ticket-icon {
+    /* scale smaller */
+    width: 30px;
+    height: 30px;
+}
+
+.ticket-price {
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 70px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.buy-ticket-btn {
+    width: 200px;
+    height: 40px;
+    margin: 1rem 0rem 1rem 3rem;
+    background-color: var(--darkgreen-color);
+    border-radius: 11px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0.1rem 0.5rem;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.buy-ticket-btn:hover {
+    background-color: var(--darkgreen-hover);
+}
