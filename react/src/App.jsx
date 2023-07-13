@@ -1,5 +1,6 @@
 import {
   BrowserRouter,
+  Navigate,
   Routes,
   Route,
 } from "react-router-dom";
@@ -9,9 +10,9 @@ import Movie from './views/Movie';
 import BuyTicket from './views/BuyTicket';
 import MyTicket from './views/MyTicket';
 import MyBalance from './views/MyBalance';
+import Payment from './views/Payment';
 import Login from './views/Login';
 import Register from './views/Register';
-import NotFound from './views/NotFound';
 import Navbar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 
@@ -26,9 +27,10 @@ function App() {
         <Route path="/buyticket" element={<BuyTicket />} />
         <Route path="/myticket" element={<MyTicket />} />
         <Route path="/mybalance" element={<MyBalance />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
     </BrowserRouter>

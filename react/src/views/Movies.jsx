@@ -1,9 +1,9 @@
-import MoviePage from '../components/Movie/MoviePage'
+import MoviesPage from '../components/Movie/MoviesPage'
 
 export default function Movies() {
     return (
         <div className="movies-page">
-            <MoviePage />
+            <MoviesPage />
         </div>
     )
 }

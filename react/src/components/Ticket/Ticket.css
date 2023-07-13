@@ -13,10 +13,12 @@
     border-radius: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
+    position: relative;
 }
 
 .ticket-container:hover {
     transform: scale(1.05);
+    z-index: 1;
 }
 
 .movie-poster {
@@ -119,4 +121,18 @@
 
 .cancel-ticket:hover {
     background-color: var(--darkred-hover);
+}
+
+.modal-overlay-ticket {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
 }

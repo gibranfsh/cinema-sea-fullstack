@@ -1,8 +1,8 @@
 import React from 'react'
-import './MoviePage.css'
+import './MoviesPage.css'
 import Movie from './Movie'
 
-const MoviePage = () => {
+const MoviesPage = () => {
     const movieDataDummy = [
         {
             id: 1,
@@ -79,4 +79,4 @@ const MoviePage = () => {
     )
 }
 
-export default MoviePage
+export default MoviesPage

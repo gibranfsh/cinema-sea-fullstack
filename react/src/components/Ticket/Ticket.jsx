@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Ticket.css'
+import TicketCancellationPopup from './TicketCancellationPopup'
 
 const Ticket = () => {
     const myTicketDummyData = [
         {
             id: 1,
+            userId: 1, // id of the user who ordered the ticket
             title: "Fast X",
             poster_url: "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
             orderedby: "Gibran",
@@ -14,6 +16,7 @@ const Ticket = () => {
             totalPrice: 159000
         }
     ]
+    const [showPopup, setShowPopup] = useState(false);
 
     function formatNumber(number) {
         // Convert the number to string
@@ -27,6 +30,23 @@ const Ticket = () => {
 
         return formattedNumber;
     }
+
+    const handleCancelTicket = () => {
+        setShowPopup(true);
+    };
+
+    const handleCancelConfirm = () => {
+        // Perform cancellation logic here
+        // ...
+
+        // Close the popup
+        setShowPopup(false);
+    };
+
+    const handleCancelCancel = () => {
+        // Close the popup
+        setShowPopup(false);
+    };
 
     return (
         <div className="ticket-container">
@@ -62,8 +82,17 @@ const Ticket = () => {
 
                 <div className="footer-buttons">
                     <button className="show-barcode">Show Barcode</button>
-                    <button className="cancel-ticket">Cancel Ticket</button>
+                    <button className="cancel-ticket" onClick={handleCancelTicket}>Cancel Ticket</button>
                 </div>
+
+                {showPopup && (
+                    <div className="modal-overlay-ticket">
+                        <TicketCancellationPopup
+                            onCancel={handleCancelCancel}
+                            onConfirm={handleCancelConfirm}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     )
