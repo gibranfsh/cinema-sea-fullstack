@@ -6,9 +6,22 @@
     overflow: hidden;
 }
 
+.carousel-item {
+    display: none;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item.active {
+    display: block;
+}
+
 .carousel-image {
     width: 100%;
     height: auto;
+    border-radius: 8px 8px 0 0;
 }
 
 .carousel-controls {

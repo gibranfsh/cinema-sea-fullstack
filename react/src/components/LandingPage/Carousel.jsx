@@ -8,17 +8,17 @@ const Carousel = () => {
     const carouselData = [
         {
             id: 1,
-            image: '/Landing/ticketpicture.jpg',
+            image: '/Landing/carousel-1.jpg',
             title: 'Promotion 1',
         },
         {
             id: 2,
-            image: '/Landing/b.jpg',
+            image: '/Landing/carousel-2.jpg',
             title: 'Promotion 2',
         },
         {
             id: 3,
-            image: '/Landing/c.jpg',
+            image: '/Landing/carousel-3.jpg',
             title: 'Promotion 3',
         },
     ];
@@ -40,10 +40,9 @@ const Carousel = () => {
             {carouselData.map((item, index) => (
                 <div
                     key={item.id}
-                    className={`carousel-item ${index === currentIndex ? 'active' : ''
-                        }`}
+                    className={`carousel-item ${index === currentIndex ? 'active' : ''}`}
                 >
-                    <img src={item.image} alt={item.title} />
+                    <img src={item.image} alt={item.title} className="carousel-image" />
                 </div>
             ))}
         </div>
