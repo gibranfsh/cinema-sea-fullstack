@@ -1,66 +1,257 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Introduction
+Welcome to Cinema SEA, the rising star in the movie theater industry! With our app, you can effortlessly browse through an extensive collection of movies at your fingertips. Enjoy the convenience of selecting showtimes, choosing your preferred seats, and securing your reservations in a matter of seconds. Say goodbye to waiting in line and hello to a seamless moviegoing experience!
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Configuration for environment variables
+If you need it fast, you can follow my installation steps (after this section) and just copy it, I put the source-code of the `.env` files there. Or you just can copy the `.env.example` file to your new `.env` file, there is two `.env.example` file, that is located in the root folder, and on the react folder, just copy it and paste it in your `.env` file.
 
-## About Laravel
+## BEFORE CONTINUING
+It is recommended to ensure that you have PHP, Composer, and Laravel properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Please note that setting up the development environment may vary depending on your operating system and personal preferences. It is important to choose a method that aligns with your requirements and follow the appropriate installation instructions.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
+1. Clone Repository
+```
+git clone https://github.com/gibranfsh/cinema-sea-fullstack.git
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. Move to the folder
+```
+cd cinema-sea-fullstack
+```
 
-## Learning Laravel
+3. Open a new terminal
+```
+start cmd
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Terminal 1 (root)
+4. Before continuing, configure the environment variables (.env) file, you can copy and paste it
+```
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=main
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-## Laravel Sponsors
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+MEMCACHED_HOST=127.0.0.1
 
-### Premium Partners
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 
-## Contributing
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=mt1
 
-## Code of Conduct
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_HOST="${PUSHER_HOST}"
+VITE_PUSHER_PORT="${PUSHER_PORT}"
+VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Back to the terminal, install the node_modules and stuff
+```
+npm run dev
+```
 
-## Security Vulnerabilities
+6. Then run the migration
+```
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. Back to the terminal, Run the Laravel backend service
+```
+php artisan serve
+```
 
-## License
+### Terminal 2 (react folder)
+8. Move to the react folder
+```
+cd react
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+9. Configure the environment variables (.env) file, you can copy and paste it
+```
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+10. Install the dependencies
+```
+npm install
+```
+
+11. Run the client application
+```
+npm run dev
+```
+
+12. The application is ready to be used.
+
+## Database
+I use sqlite for the database, if you want to look inside the database you can use something like DB Browser for sqlite or DB Viewer, but I recommend to use DB Browser if you want to look inside the database (you can see tables, etc). You can open the database.sqlite (located inside the root database folder) file with it. But make sure you have configure your environment variables
+
+# API Documentation
+## Table of Contents
+
+- [Authentication](#authentication)
+  - [Register a User](#register-a-user)
+  - [User Login](#user-login)
+  - [User Logout](#user-logout)
+- [Users](#users)
+  - [Get User Details](#get-user-details)
+  - [Create a User](#create-a-user)
+- [Seats](#seats)
+  - [Create a Seat](#create-a-seat)
+  - [Get Seats by Movie ID](#get-seats-by-movie-id)
+  - [Update a Seat](#update-a-seat)
+- [Tickets](#tickets)
+  - [Create a Ticket](#create-a-ticket)
+  - [Get Tickets by User ID](#get-tickets-by-user-id)
+  - [Delete a Ticket](#delete-a-ticket)
+
+## Authentication
+
+### Register a User
+
+- URL: `/register`
+- Method: `POST`
+- Description: Register a new user.
+- Request Body:
+  - `name` (string): The name of the user.
+  - `email` (string): The email address of the user.
+  - `password` (string): The password for the user.
+
+### User Login
+
+- URL: `/login`
+- Method: `POST`
+- Description: Authenticate user and generate an access token.
+- Request Body:
+  - `email` (string): The email address of the user.
+  - `password` (string): The password for the user.
+
+### User Logout
+
+- URL: `/logout`
+- Method: `POST`
+- Description: Invalidate the user's access token and log them out.
+
+## Users
+
+### Get User Details
+
+- URL: `/users/{id}`
+- Method: `GET`
+- Description: Get details of a specific user.
+- Request Parameters:
+  - `id` (integer): The ID of the user.
+
+### Create a User
+
+- URL: `/users`
+- Method: `POST`
+- Description: Create a new user.
+- Request Body:
+  - `name` (string): The name of the user.
+  - `email` (string): The email address of the user.
+  - `password` (string): The password for the user.
+
+## Seats
+
+### Create a Seat
+
+- URL: `/seats`
+- Method: `POST`
+- Description: Create a new seat.
+- Request Body:
+  - `movie_id` (integer): The ID of the movie associated with the seat.
+  - `seat_number` (string): The seat number.
+
+### Get Seats by Movie ID
+
+- URL: `/seats/{movie_id}`
+- Method: `GET`
+- Description: Get all seats for a specific movie.
+- Request Parameters:
+  - `movie_id` (integer): The ID of the movie.
+
+### Update a Seat
+
+- URL: `/seats/{movie_id}`
+- Method: `PUT`
+- Description: Update the details of a seat.
+- Request Parameters:
+  - `movie_id` (integer): The ID of the movie associated with the seat.
+- Request Body:
+  - `seat_number` (string): The updated seat number.
+
+## Tickets
+
+### Create a Ticket
+
+- URL: `/tickets`
+- Method: `POST`
+- Description: Create a new ticket.
+- Request Body:
+  - `user_id` (integer): The ID of the user who ordered the ticket.
+  - `movie_id` (integer): The ID of the movie associated with the ticket.
+  - `date` (string): The date of the ticket.
+  - `time` (string): The time of the ticket.
+  - `seats` (array): An array of seat numbers.
+  - `total_price` (numeric): The total price of the ticket.
+
+### Get Tickets by User ID
+
+- URL: `/tickets/{user_id}`
+- Method: `GET`
+- Description: Get all tickets for a specific user.
+- Request Parameters:
+  - `user_id` (integer): The ID of the user.
+
+### Delete a Ticket
+
+- URL: `/tickets/{id}`
+- Method: `DELETE`
+- Description: Delete a specific ticket.
+- Request Parameters:
+  - `id` (integer): The ID of the ticket.
+
