@@ -1,8 +1,11 @@
 import React from 'react'
-import './Movie.css'
+import './MovieCard.css'
 
-const Movie = (props) => {
-    
+const MovieCard = (props) => {
+    const handleRedirect = () => {
+        window.location.href = `/movie/${props.id}`
+    }
+
     return (
         <div className="movie-container">
             <img src={props.imagePath} alt={props.title} className="movie-image" />
@@ -13,7 +16,7 @@ const Movie = (props) => {
                     <strong>Age Rating</strong>
                     <p>{props.ageRating}</p>
                 </div>
-
+                <img src="/MovieInfo/Line 22.svg" alt="line" />
                 <div className="movie-ticket-price">
                     <strong>Ticket Price</strong>
                     <p>Rp{props.ticketPrice}</p>
@@ -21,11 +24,11 @@ const Movie = (props) => {
             </div>
 
             {/* `/movie/${props.id}` */}
-            <button className="more-details-btn">
+            <button className="more-details-btn" onClick={handleRedirect}>
                 More Details
             </button>
         </div>
     )
 }
 
-export default Movie
+export default MovieCard

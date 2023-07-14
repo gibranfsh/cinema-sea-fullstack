@@ -15,25 +15,28 @@ import Login from './views/Login';
 import Register from './views/Register';
 import Navbar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import { ContextProvider } from './contexts/ContextProvider'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movie" element={<Movie />} />
-        <Route path="/buyticket" element={<BuyTicket />} />
-        <Route path="/myticket" element={<MyTicket />} />
-        <Route path="/mybalance" element={<MyBalance />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+    <ContextProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/buyticket" element={<BuyTicket />} />
+          <Route path="/myticket" element={<MyTicket />} />
+          <Route path="/mybalance" element={<MyBalance />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
-    </BrowserRouter>
+    </ContextProvider>
   )
 }
 

@@ -10,7 +10,7 @@
     margin: 10px 0;
 }
 
-.popup-buttons button {
+.popup-buttons-modal button {
     margin: 5px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -18,21 +18,21 @@
     cursor: pointer;
 }
 
-.popup-buttons button:first-child {
+.popup-buttons-modal button:first-child {
     background-color: var(--darkgreen-color);
     color: white;
 }
 
-.popup-buttons button:first-child:hover {
+.popup-buttons-modal button:first-child:hover {
     background-color: var(--darkgreen-hover);
 }
 
-.popup-buttons button:last-child {
+.popup-buttons-modal button:last-child {
     background-color: var(--darkred-color);
     color: white;
 }
 
-.popup-buttons button:last-child:hover {
+.popup-buttons-modal button:last-child:hover {
     background-color: var(--darkred-hover);
 }
 
@@ -46,11 +46,17 @@
     color: var(--darkgreen-color);
 }
 
+.mt-12-container, .mt-13-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .movie-time-12,
 .movie-time-13 {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: center;
 }
 
@@ -70,6 +76,7 @@
     font-size: 13px;
     color: var(--darkgreen-color);
     background-color: white;
+    border: 1px solid var(--darkgreen-color);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

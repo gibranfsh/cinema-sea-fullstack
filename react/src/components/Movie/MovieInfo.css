@@ -39,7 +39,7 @@
 .film-details-middle {
     display: flex;
     flex-direction: column;
-    gap : 10px;
+    gap: 10px;
 }
 
 .see-trailer-btn {
@@ -103,4 +103,10 @@
     right: 0;
     bottom: 0;
     z-index: 3;
+}
+
+
+.underline-cursor {
+    cursor: pointer;
+    text-decoration: underline;
 }

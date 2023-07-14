@@ -1,79 +1,34 @@
 import React from 'react'
 import './MoviesPage.css'
-import Movie from './Movie'
+import Movie from './MovieCard'
+import useSWR from 'swr';
 
 const MoviesPage = () => {
-    const movieDataDummy = [
-        {
-            id: 1,
-            title: "Fast X",
-            description: "Dom Toretto dan keluarganya menjadi sasaran putra gembong narkoba Hernan Reyes yang pendendam.",
-            release_date: "2023-05-17",
-            poster_url: "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
-            age_rating: 15,
-            ticket_price: 53000
-        },
-    ]
+    const { data: movieData, error } = useSWR('MovieInfo/movie-data.json', async (url) => {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    });
+
+    if (error) {
+        console.error('Error fetching movie data:', error);
+    }
 
     return (
         <div className="moviepage-container">
             <h1>Available Movies</h1>
             <div className="available-movies">
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
-
-                <Movie
-                    id={movieDataDummy[0].id}
-                    title={movieDataDummy[0].title}
-                    imagePath={movieDataDummy[0].poster_url}
-                    ageRating={movieDataDummy[0].age_rating}
-                    ticketPrice={movieDataDummy[0].ticket_price}
-                />
+                {movieData &&
+                    movieData.map((movie, index) => (
+                        <Movie
+                            key={index}
+                            id={movie.id}
+                            title={movie.title}
+                            imagePath={movie.poster_url}
+                            ageRating={movie.age_rating}
+                            ticketPrice={movie.ticket_price}
+                        />
+                    ))}
             </div>
         </div>
     )

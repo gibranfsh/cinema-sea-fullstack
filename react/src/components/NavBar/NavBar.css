@@ -65,33 +65,110 @@ body {
     cursor: pointer;
 }
 
+.dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: none;
+    border: none;
+    padding: 0px 30px;
+    height: 80px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--darkgreen-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-item-balance {
+    display: block;
+    width: 100%;
+    padding: 12px 0px 12px 0px;
+    border: solid 1px var(--darkgreen-hover);
+    border-top: solid 2px var(--darkgreen-hover);
+    background: var(--darkgreen-color);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item-balance:hover {
+    background-color: var(--darkgreen-hover);
+}
+
+.dropdown-item-logout {
+    display: block;
+    width: 100%;
+    padding: 12px 0px 12px 0px;
+    border: solid 1px var(--darkred-hover);
+    background: var(--darkred-color);
+    color: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item-logout:hover {
+    background-color: var(--darkred-hover);
+}
+
+
 /* Media Queries */
 
 /* Tablet */
 @media screen and (max-width: 1024px) {
     .nav {
-      padding: 0 30px;
-      font-size: 18px;
+        padding: 0 30px;
+        font-size: 18px;
     }
-  
+
     .feat-nav {
-      margin-right: 100px;
+        margin-right: 100px;
     }
-  }
-  
-  /* Mobile */
-  @media screen and (max-width: 768px) {
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
     .nav {
-      padding: 0 20px;
-      font-size: 16px;
+        padding: 0 20px;
+        font-size: 16px;
     }
-  
+
     .feat-nav,
     .reglog-nav {
-      display: none;
+        display: none;
     }
 
     .nav-hamburger {
         display: block;
     }
-  }
+}

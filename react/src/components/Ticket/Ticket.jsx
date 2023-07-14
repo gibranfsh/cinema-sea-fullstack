@@ -2,21 +2,11 @@ import React, { useState } from 'react'
 import './Ticket.css'
 import TicketCancellationPopup from './TicketCancellationPopup'
 
-const Ticket = () => {
-    const myTicketDummyData = [
-        {
-            id: 1,
-            userId: 1, // id of the user who ordered the ticket
-            title: "Fast X",
-            poster_url: "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
-            orderedby: "Gibran",
-            date: "12-07-2003",
-            time: "12:00",
-            seats: ["13", "14", "15"],
-            totalPrice: 159000
-        }
-    ]
+const Ticket = (props) => {
+    const { id, title, poster_url, orderedby, date, time, seats, totalPrice, reload } = props;
+
     const [showPopup, setShowPopup] = useState(false);
+    const seatArray = JSON.parse(seats); // Convert seats string to array
 
     function formatNumber(number) {
         // Convert the number to string
@@ -35,12 +25,9 @@ const Ticket = () => {
         setShowPopup(true);
     };
 
-    const handleCancelConfirm = () => {
-        // Perform cancellation logic here
-        // ...
-
-        // Close the popup
+    const handleOnClose = () => {
         setShowPopup(false);
+        reload();
     };
 
     const handleCancelCancel = () => {
@@ -51,23 +38,23 @@ const Ticket = () => {
     return (
         <div className="ticket-container">
             <div className="ticket-header">
-                <p>{myTicketDummyData[0].date}</p>
+                <p>{date}</p>
                 <h3>Paid</h3>
             </div>
 
             <div className="ticket-body">
                 {/* poster img tag */}
-                <img src={myTicketDummyData[0].poster_url} alt="movie-poster" className="movie-poster" />
+                <img src={poster_url} alt="movie-poster" className="movie-poster" />
 
                 <div className="ticket-body-info">
                     <div className="ticket-body-info-top">
-                        <h2>{myTicketDummyData[0].title}</h2>
-                        <p>Ordered by {myTicketDummyData[0].orderedby}</p>
+                        <h2>{title}</h2>
+                        <p>Ordered by {orderedby}</p>
                     </div>
 
                     <div className="ticket-body-info-bottom">
-                        <p>{myTicketDummyData[0].time}, {myTicketDummyData[0].seats.length} seats</p>
-                        <p>Seats number:<br /><strong>{myTicketDummyData[0].seats.join(", ")}, 16, 17, 18</strong></p>
+                        <p>{time}, {seatArray.length} seats</p>
+                        <p>Seats number:<br /><strong>{seatArray.join(", ")}</strong></p>
                     </div>
                 </div>
             </div>
@@ -77,7 +64,7 @@ const Ticket = () => {
             <div className="ticket-footer">
                 <div className="total-price">
                     <p>Total Price</p>
-                    <h2>Rp{formatNumber(myTicketDummyData[0].totalPrice)}</h2>
+                    <h2>Rp{formatNumber(totalPrice)}</h2>
                 </div>
 
                 <div className="footer-buttons">
@@ -88,8 +75,10 @@ const Ticket = () => {
                 {showPopup && (
                     <div className="modal-overlay-ticket">
                         <TicketCancellationPopup
+                            id={id}
+                            totalPrice={totalPrice}
                             onCancel={handleCancelCancel}
-                            onConfirm={handleCancelConfirm}
+                            onClose={handleOnClose}
                         />
                     </div>
                 )}

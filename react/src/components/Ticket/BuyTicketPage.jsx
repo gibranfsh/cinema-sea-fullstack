@@ -1,33 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './BuyTicketPage.css'
+import { useNavigate } from 'react-router-dom';
+import axiosClient from '../../axios-client';
+import useSWR from 'swr';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const BuyTicketPage = () => {
-    const movieDataDummy = [
-        {
-            id: 1,
-            title: "Fast X",
-            date: "12-07-2003",
-            time: "12:00",
-            age_rating: 15,
-            ticket_price: 53000
-        },
-    ]
+const BuyTicketPage = (props) => {
+    const { user, movieId, movieTitle, ticketPrice, age_rating, movieDate, movieTime } = props
+    const navigate = useNavigate();
     const [selectedSeats, setSelectedSeats] = useState([])
-    const [totalPrice, setTotalPrice] = useState(selectedSeats.length * movieDataDummy[0].ticket_price)
-    const [seatsAvailability, setSeatsAvailability] = useState( // 1 = available, 0 = unavailable
-        [
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 0, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-        ])
+    const [totalPrice, setTotalPrice] = useState(selectedSeats.length * ticketPrice)
+    const [isLoading, setIsLoading] = useState(true)
+    // Get seats availability with API (seats/:movieID)
+    const { data: seatsAvailabilityData } = useSWR(`/seats/${movieId}`, axiosClient.get)
 
+    const [seatsAvailability, setSeatsAvailability] = useState([])
+
+    useEffect(() => {
+        if (seatsAvailabilityData) {
+            const parsedSeatArray = JSON.parse(seatsAvailabilityData.data.seat_array);
+            setSeatsAvailability(parsedSeatArray);
+        }
+
+        if (seatsAvailabilityData && isLoading) {
+            setIsLoading(false);
+        }
+
+    }, [seatsAvailabilityData]);
 
     function formatNumber(number) {
         // Convert the number to string
@@ -46,7 +46,7 @@ const BuyTicketPage = () => {
         // if seat is already selected, unselect it
         if (selectedSeats.includes(seatNumber)) {
             setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
-            setTotalPrice(totalPrice - movieDataDummy[0].ticket_price);
+            setTotalPrice(totalPrice - ticketPrice);
             return;
         }
 
@@ -67,16 +67,83 @@ const BuyTicketPage = () => {
                 return;
             }
             setSelectedSeats([...selectedSeats, seatNumber]);
-            setTotalPrice(totalPrice + movieDataDummy[0].ticket_price);
+            setTotalPrice(totalPrice + ticketPrice);
         }
+    }
+
+    const handleConfirmOrder = () => {
+        if (selectedSeats.length === 0) {
+            toast.error("You must select at least one seat!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
+
+        if (user.age < age_rating) {
+            toast.error("You are too young to watch this movie!, you will be redirected to the movies page in 5 seconds", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setTimeout(() => {
+                window.location.href = "/movies";
+            }, 6000);
+            return;
+        }
+
+        if (user.balance < totalPrice) {
+            toast.error("You don't have enough balance!, please top up your balance first in the My Balance page", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
+
+        // make the selected seats unavailable
+        const newSeatsAvailability = [...seatsAvailability];
+        selectedSeats.forEach((seat) => {
+            newSeatsAvailability[seat - 1] = 0;
+        });
+        
+        // navigate to payment page
+        navigate('/payment', {
+            state: {
+                user: user,
+                movieId: movieId,
+                movieTitle: movieTitle,
+                date: movieDate,
+                time: movieTime,
+                selectedSeats: selectedSeats,
+                newSeatsAvailability: newSeatsAvailability,
+                totalPrice: totalPrice
+            }
+        })
     }
 
     return (
         <div className="buy-ticket-container">
             <div className="buy-ticket-header">
-                <p><span className="underlined-text">Movies</span> {"> " + movieDataDummy[0].title + " > Buy Ticket"}</p>
-                <h1>{movieDataDummy[0].title}</h1>
-                <p>Date: {movieDataDummy[0].date}, Time: {movieDataDummy[0].time}</p>
+                <p><span className="underlined-text">Movies</span> {"> " + movieTitle + " > Buy Ticket"}</p>
+                <h1>{movieTitle}</h1>
+                <p>Date: {movieDate}, Time: {movieTime}</p>
             </div>
 
             <div className="seat-color-info">
@@ -103,7 +170,7 @@ const BuyTicketPage = () => {
 
                 <p>Screen</p>
 
-                <div className="seats-container">
+                {!isLoading ? (<div className="seats-container">
                     {/* there 64 seats */}
                     <div className="seats-row-1">
                         <div className="left-seats">
@@ -320,7 +387,11 @@ const BuyTicketPage = () => {
                             })}
                         </div>
                     </div>
-                </div>
+                </div>) : (
+                    <div className="seats-loading">
+                        Loading...
+                    </div>
+                )}
             </div>
 
             <div className="buy-ticket-footer">
@@ -332,10 +403,10 @@ const BuyTicketPage = () => {
                 <div className="buy-ticket-footer-right">
                     <button
                         className="confirm-order-button"
-                    // onClick={handleConfirmOrder}
+                        onClick={handleConfirmOrder}
                     >
                         <p>Confirm Order</p>
-                        <img src="/Landing/mdi_arrow-right.svg" alt="" className="arrow-icon"/>
+                        <img src="/Landing/mdi_arrow-right.svg" alt="" className="arrow-icon" />
                     </button>
                 </div>
             </div>

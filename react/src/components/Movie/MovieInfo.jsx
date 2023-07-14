@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 import './MovieInfo.css'
 import MovieTimeModal from './MovieTimeModal'
+import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
 
 const MovieInfo = () => {
-    const movieDataDummy = [
-        {
-            id: 1,
-            title: "Fast X",
-            date: "12-07-2003",
-            time: "12:00",
-            description: "Dom Torettoeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee dan keluarganya menjadi sasaran putra gembong narkoba Hernan Reyes yang pendendam.",
-            release_date: "2023-05-17",
-            poster_url: "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
-            age_rating: 15,
-            ticket_price: 53000
-        },
-    ]
     const [showPopup, setShowPopup] = useState(false);
+    const { id } = useParams();
+
+    const { data: movieData, error } = useSWR('../MovieInfo/movie-data.json', async (url) => {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    });
+
+    if (error) {
+        console.error('Error fetching movie data:', error);
+    }
+
+    const movie = movieData && movieData.find((movie) => movie.id === Number(id));
 
     function formatNumber(number) {
         // Convert the number to string
@@ -35,14 +37,6 @@ const MovieInfo = () => {
         setShowPopup(true);
     };
 
-    const handleCancelConfirm = () => {
-        // Perform cancellation logic here
-        // ...
-
-        // Close the popup
-        setShowPopup(false);
-    };
-
     const handleCancelCancel = () => {
         // Close the popup
         setShowPopup(false);
@@ -51,33 +45,33 @@ const MovieInfo = () => {
     return (
         <div className="movieinfo-container">
             <div className="movieinfo-header">
-                <p><span className="underlined-text">Movies</span> {">" + " " + movieDataDummy[0].title}</p>
-                <h1>{movieDataDummy[0].title}</h1>
+                <p><span onClick={() => window.location.href = "/movies"} className="underline-cursor">Movies</span> {">" + " " + (movieData ? movie.title : "")}</p>
+                <h1>{movieData ? movie.title : ""}</h1>
                 <p className="underlined-text">Available</p>
             </div>
 
             <div className="poster-buy-button">
                 <div className="film-details">
-                    <img src="Ticket/aaaa.jpg" alt="movie-poster" className="movie-posterz" />
+                    <img src={movieData ? movie.poster_url : ""} alt="movie-poster" className="movie-posterz" />
 
                     <div className="film-details-text">
                         <div className="film-details-top">
                             <p>
-                                {movieDataDummy[0].description}
+                                {movieData ? movie.description : ""}
                             </p>
                         </div>
 
                         <div className="film-details-middle">
                             <div className="release-date">
-                                <strong>Release Date : </strong><p>{movieDataDummy[0].release_date}</p>
+                                <strong>Release Date : </strong><p>{movieData ? movie.release_date : ""}</p>
                             </div>
 
                             <div className="age-rating">
-                                <strong>Age Rating : </strong><p>{movieDataDummy[0].age_rating}</p>
+                                <strong>Age Rating : </strong><p>{movieData ? movie.age_rating : ""}</p>
                             </div>
                         </div>
 
-                        <div className="see-trailer-btn">
+                        <div className="see-trailer-btn" onClick={() => window.open('https://youtube.com')}>
                             <p>See Trailer</p>
                         </div>
                     </div>
@@ -85,7 +79,7 @@ const MovieInfo = () => {
 
                 <div className="ticket-price">
                     <img src="/MovieInfo/ep_ticket.svg" alt="ticket-icon" className="ticket-icon" />
-                    <p>Rp{formatNumber(movieDataDummy[0].ticket_price)}</p>
+                    <p>Rp{formatNumber(movieData ? movie.ticket_price : 0)}</p>
                 </div>
 
                 <button className="buy-ticket-btn" onClick={handleCancelTicket}>
@@ -96,8 +90,11 @@ const MovieInfo = () => {
                 <div className="modal-overlay-movieinfo">
                     <div className="modal-movieinfo">
                         <MovieTimeModal
+                            movieId={movieData ? movie.id : ""}
+                            movieTitle={movieData ? movie.title : ""}
+                            ticketPrice={movieData ? movie.ticket_price : 0}
+                            age_rating={movieData ? movie.age_rating : ""}
                             onCancel={handleCancelCancel}
-                            onConfirm={handleCancelConfirm}
                         />
                     </div>
                 </div>

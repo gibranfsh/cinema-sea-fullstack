@@ -1,21 +1,77 @@
 import React, { useState } from 'react';
 import './LoginForm.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+import axiosClient from '../../axios-client';
+import { useStateContext } from '../../contexts/ContextProvider';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { setUser, setToken, token } = useStateContext();
+
+    if (token) {
+        return <Navigate to="/" />;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Username: " + username);
-        console.log("Password: " + password);
+        if (!username) {
+            toast.error("Username must be filled", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
 
-        // clear form
-        // setUsername("");
-        // setPassword("");
+        if (!password) {
+            toast.error("Password must be filled", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
+
+        const payload = {
+            username,
+            password
+        }
+
+        axiosClient.post('/login', payload)
+            .then(({ data }) => {
+                setToken(data.token);
+                setUser(data.user);
+            })
+            .catch(err => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                    toast.error("Invalid Credentials", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+                    });
+                }
+            })
     }
 
     return (
@@ -52,6 +108,18 @@ export default function LoginForm() {
                     <button className="form-button" type="submit">Login</button>
                 </form>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </div>
     )
 }
