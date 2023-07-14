@@ -8,7 +8,7 @@ If you need it fast, you can follow my installation steps (after this section) a
 First I want to say sorry because the front-end is not responsive yet because I started this project sooo late :(, I only have like 7 days to make this project (designing UI/UX using figma and also implementing the front-end and back-end side), so I hope you make natural of it xD
 
 ## BEFORE CONTINUING
-It is recommended to ensure that you have PHP, Composer, and Laravel properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
+This project was built using PHP, Laravel, and React, it is very recommended to ensure that you have PHP, Composer, Laravel, Node.js (for npm) properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
 
 Please note that setting up the development environment may vary depending on your operating system and personal preferences. It is important to choose a method that aligns with your requirements and follow the appropriate installation instructions.
 
