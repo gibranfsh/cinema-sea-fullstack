@@ -4,6 +4,9 @@ Welcome to Cinema SEA, the rising star in the movie theater industry! With our a
 ## Configuration for environment variables
 If you need it fast, you can follow my installation steps (after this section) and just copy it, I put the source-code of the `.env` files there. Or you just can copy the `.env.example` file to your new `.env` file, there is two `.env.example` file, that is located in the root folder, and on the react folder, just copy it and paste it in your `.env` file.
 
+## Apology
+First I want to say sorry because the front-end is not responsive yet because I started this project sooo late :(, I only have like 7 days to make this project (designing UI/UX using figma and also implementing the front-end and back-end side), so I hope you make natural of it xD
+
 ## BEFORE CONTINUING
 It is recommended to ensure that you have PHP, Composer, and Laravel properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
 
