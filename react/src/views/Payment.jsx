@@ -5,7 +5,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 const Payment = () => {
     const location = useLocation();
 
-    // if null
+    // if location.state is null, redirect to home page
     if (!location.state) {
         return <Navigate to="/" />
     }

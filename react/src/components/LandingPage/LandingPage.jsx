@@ -42,8 +42,6 @@ const LandingPage = () => {
 
                 <div className="carousel-component">
                     <Carousel />
-                    {/* for now i use image */}
-                    {/* <img src="/Landing/a.jpg" alt="logo" className="carousel-image" /> */}
                 </div>
             </div>
 
