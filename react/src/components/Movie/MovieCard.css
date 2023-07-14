@@ -13,6 +13,14 @@
     border-radius: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.movie-container.appear {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .movie-container:hover {
@@ -46,7 +54,8 @@
     background: rgb(231, 230, 230);
 }
 
-.movie-age-rating, .movie-ticket-price {
+.movie-age-rating,
+.movie-ticket-price {
     text-align: center;
     font-size: 15px;
     padding: 0.3rem 0rem;
