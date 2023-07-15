@@ -6,7 +6,7 @@ First I want to say sorry because the front-end is not responsive yet because I 
 
 
 ## BEFORE CONTINUING
-This project was built using PHP, Laravel, and React, it is very recommended to ensure that you have PHP, Composer, Laravel, Node.js (for npm) properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
+This project was built using PHP, Laravel, and React, it is very recommended to ensure that you have PHP, Composer, Laravel, Node.js (for npm) properly installed and set up before proceeding with the project. There are various resources available in the internet that provide detailed instructions on installing these dependencies.
 
 Please note that setting up the development environment may vary depending on your operating system and personal preferences. It is important to choose a method that aligns with your requirements and follow the appropriate installation instructions.
 
