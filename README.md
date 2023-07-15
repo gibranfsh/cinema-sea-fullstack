@@ -1,18 +1,19 @@
 ## Introduction
 Welcome to Cinema SEA, the rising star in the movie theater industry! With our app, you can effortlessly browse through an extensive collection of movies at your fingertips. Enjoy the convenience of selecting showtimes, choosing your preferred seats, and securing your reservations in a matter of seconds. Say goodbye to waiting in line and hello to a seamless moviegoing experience!
 
-## Configuration for environment variables
-If you need it fast, you can follow my installation steps (after this section) and just copy it, I put the source-code of the `.env` files there. Or you just can copy the `.env.example` file to your new `.env` file, there is two `.env.example` file, that is located in the root folder, and on the react folder, just copy it and paste it in your `.env` file.
-
 ## Apology
 First I want to say sorry because the front-end is not responsive yet because I started this project sooo late :(, I only have like 7 days to make this project (designing UI/UX using figma and also implementing the front-end and back-end side), so I hope you make natural of it xD
+
 
 ## BEFORE CONTINUING
 This project was built using PHP, Laravel, and React, it is very recommended to ensure that you have PHP, Composer, Laravel, Node.js (for npm) properly installed and set up before proceeding with the project. There are various resources available that provide detailed instructions on installing these dependencies. One common approach is to use XAMPP, which simplifies the installation process.
 
 Please note that setting up the development environment may vary depending on your operating system and personal preferences. It is important to choose a method that aligns with your requirements and follow the appropriate installation instructions.
 
-## Installation
+## Configuration for environment variables
+You can follow my installation steps (after this section), I put the source-code of the `.env` files there.
+
+## Installations
 1. Clone Repository
 ```
 git clone https://github.com/gibranfsh/cinema-sea-fullstack.git
@@ -29,7 +30,7 @@ start cmd
 ```
 
 ### Terminal 1 (root)
-4. Before continuing, configure the environment variables (.env) file, you can copy and paste it
+4. Before continuing, configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
 ```
 APP_NAME=Laravel
 APP_ENV=local
@@ -96,41 +97,98 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 npm run dev
 ```
 
-6. Then run the migration
+6. Run this to install the dependencies
+```
+composer install
+```
+
+#### ERROR SOLUTIONS
+If you guys facing this error with a long red box saying :
+```
+Your lock file does not contain a compatible set of packages. Please run composer update
+```
+
+Then execute this command one by one, it may take awhile, for me its about 30 minutes :(, yeah I know im very sorry because I don't know this will be happen, but trust me it works!
+```
+composer install --ignore-platform-reqs
+
+composer update --ignore-platform-req=ext-fileinfo
+```
+
+7. Then run the migration files
 ```
 php artisan migrate
 ```
 
-7. Back to the terminal, Run the Laravel backend service
+#### Error Solutions
+If you guys facing the error saying this :
+```
+Illuminate\Database\QueryException 
+
+could not find driver (Connection: sqlite, SQL: PRAGMA foreign_keys = ON;)
+```
+
+First, check where the php.ini located in your machine by executing :
+```
+php --ini
+```
+
+For me the result is like this
+```
+Configuration File (php.ini) Path: 
+Loaded Configuration File:         C:\Program Files\php-8.2.8\php.ini
+Scan for additional .ini files in: (none)
+Additional .ini files parsed:      (none)
+```
+
+Then, go to the directory where the Loaded Configuration File located (for me its C:\Program Files\php-8.2.8\php.ini) just use the basic windows file explorer!
+
+After that, select the file named "php" with type file of "Configuration Settings" (NOT THE php.ini-development and NOT THE php.ini-production), and then right click and open with VSCode. And then, change ";extension=pdo_sqlite" to "extension=pdo_sqlite" and ";extension=sqlite3" to "extension=sqlite3", JUST REMOVE THE SEMI-COLON (";"). After that, save the file (CTRL + S), if you cannot save the file, just click the "Retry as Admin..." at the showing popup at the right bottom of ur screen.
+
+```
+";extension=pdo_sqlite" by removing the /;/, it should look like this "extension=pdo_sqlite"
+
+";extension=sqlite3" should be "extension=sqlite3" without the /;/ symbol
+```
+
+After that, restart your VSCode, and then run the command again
+```
+php artisan migrate
+```
+
+8. After that, please download a software to look inside the database, I recommend you using the "DB Browser for SQLite" its free and won't take long to download and install (3 to 5 minutes), after you finished installing it, open the DB Browser for SQLite, and then click the "Open Database" at the top left, and then select the "database.sqlite" file on this directory "..\cinema-sea-fullstack\database\database.sqlite". After that you can see a lot of Tables appearing, and then right click the "users" table and select "Modify Table".
+After that, UNCHECK the non-null constraint (NN) for EMAIL field. Once you've done, click "OK" and you're ready to go :D
+
+9. Back to the terminal, Run the Laravel backend service for your backend server
 ```
 php artisan serve
 ```
 
 ### Terminal 2 (react folder)
-8. Move to the react folder
+10. Move to the react folder
 ```
 cd react
 ```
 
-9. Configure the environment variables (.env) file, you can copy and paste it
+11. Configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
 ```
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-10. Install the dependencies
+12. Install the dependencies
 ```
 npm install
 ```
 
-11. Run the client application
+13. Run the client application
 ```
 npm run dev
 ```
 
-12. The application is ready to be used.
+14. The application is ready to be used.
 
 ## Database
-I use sqlite for the database, if you want to look inside the database you can use something like DB Browser for sqlite or DB Viewer, but I recommend to use DB Browser if you want to look inside the database (you can see tables, etc). You can open the database.sqlite (located inside the root database folder) file with it. But make sure you have configure your environment variables
+I use sqlite for the database, if you want to look inside the database you can use something like DB Browser for sqlite or DB Viewer, but I really recommend you to use DB Browser if you want to look inside the database (you can see tables, etc). You can open the database.sqlite (located inside the root database folder) file with it. But make sure you have configure your environment variables
 
 # API Documentation
 ## Table of Contents
