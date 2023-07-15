@@ -14,7 +14,7 @@ Please note that setting up the development environment may vary depending on yo
 You can follow my installation steps (after this section), I put the source-code of the `.env` files there.
 
 ## Installations
-1. Clone Repository
+1. Clone the repository
 ```
 git clone https://github.com/gibranfsh/cinema-sea-fullstack.git
 ```
@@ -24,13 +24,15 @@ git clone https://github.com/gibranfsh/cinema-sea-fullstack.git
 cd cinema-sea-fullstack
 ```
 
-3. Open a new terminal
+3. open with VSCode
 ```
-start cmd
+code .
 ```
 
+4. Open TWO terminals in VSCode
+
 ### Terminal 1 (root)
-4. Before continuing, configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
+5. Before continuing, configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
 ```
 APP_NAME=Laravel
 APP_ENV=local
@@ -92,12 +94,12 @@ VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-5. Back to the terminal, install the node_modules and stuff
+6. Back to the terminal, install the node_modules and stuff
 ```
 npm run dev
 ```
 
-6. Run this to install the dependencies
+7. Run this to install the dependencies
 ```
 composer install
 ```
@@ -115,7 +117,7 @@ composer install --ignore-platform-reqs
 composer update --ignore-platform-req=ext-fileinfo
 ```
 
-7. Then run the migration files
+8. Then run the migration files
 ```
 php artisan migrate
 ```
@@ -143,12 +145,15 @@ Additional .ini files parsed:      (none)
 
 Then, go to the directory where the Loaded Configuration File located (for me its C:\Program Files\php-8.2.8\php.ini) just use the basic windows file explorer!
 
-After that, select the file named "php" with type file of "Configuration Settings" (NOT THE php.ini-development and NOT THE php.ini-production), and then right click and open with VSCode. And then, change ";extension=pdo_sqlite" to "extension=pdo_sqlite" and ";extension=sqlite3" to "extension=sqlite3", JUST REMOVE THE SEMI-COLON (";"). After that, save the file (CTRL + S), if you cannot save the file, just click the "Retry as Admin..." at the showing popup at the right bottom of ur screen.
+After that, select the file named "php" with type file of "Configuration Settings" (NOT THE php.ini-development and NOT THE php.ini-production), and then right click and open with VSCode.
+And then, change ";extension=pdo_sqlite" to "extension=pdo_sqlite" and ";extension=sqlite3" to "extension=sqlite3", JUST REMOVE THE SEMI-COLON (";"). After that, save the file (CTRL + S), if you cannot save the file, just click the "Retry as Admin..." at the showing popup at the right bottom of your screen.
 
 ```
-";extension=pdo_sqlite" by removing the /;/, it should look like this "extension=pdo_sqlite"
+";extension=pdo_sqlite" remove the /;/, it should look like this "extension=pdo_sqlite"
+ 
+ and
 
-";extension=sqlite3" should be "extension=sqlite3" without the /;/ symbol
+ ";extension=sqlite3" remove the /;/, it should look like this "extension=sqlite3"
 ```
 
 After that, restart your VSCode, and then run the command again
@@ -156,36 +161,36 @@ After that, restart your VSCode, and then run the command again
 php artisan migrate
 ```
 
-8. After that, please download a software to look inside the database, I recommend you using the "DB Browser for SQLite" its free and won't take long to download and install (3 to 5 minutes), after you finished installing it, open the DB Browser for SQLite, and then click the "Open Database" at the top left, and then select the "database.sqlite" file on this directory "..\cinema-sea-fullstack\database\database.sqlite". After that you can see a lot of Tables appearing, and then right click the "users" table and select "Modify Table".
+9. After that, please download a software to look inside the database, I recommend you using the "DB Browser for SQLite" its free and won't take long to download and install (3 to 5 minutes), after you finished installing it, open the DB Browser for SQLite, and then click the "Open Database" at the top left, and then select the "database.sqlite" file on this directory "..\cinema-sea-fullstack\database\database.sqlite". After that you can see a lot of Tables appearing, and then right click the "users" table and select "Modify Table".
 After that, UNCHECK the non-null constraint (NN) for EMAIL field. Once you've done, click "OK" and you're ready to go :D
 
-9. Back to the terminal, Run the Laravel backend service for your backend server
+10. Back to the terminal, Run the Laravel backend service for your backend server
 ```
 php artisan serve
 ```
 
 ### Terminal 2 (react folder)
-10. Move to the react folder
+11. Move to the react folder
 ```
 cd react
 ```
 
-11. Configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
+12. Configure the environment variables (.env) file, you can copy and paste it or just simply delete ".example" from "env.example"
 ```
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-12. Install the dependencies
+13. Install the dependencies
 ```
 npm install
 ```
 
-13. Run the client application
+14. Run the client application
 ```
 npm run dev
 ```
 
-14. The application is ready to be used.
+15. The application is ready to be used.
 
 ## Database
 I use sqlite for the database, if you want to look inside the database you can use something like DB Browser for sqlite or DB Viewer, but I really recommend you to use DB Browser if you want to look inside the database (you can see tables, etc). You can open the database.sqlite (located inside the root database folder) file with it. But make sure you have configure your environment variables
