@@ -161,8 +161,14 @@ After that, restart your VSCode, and then run the command again
 php artisan migrate
 ```
 
-9. After that, please download a software to look inside the database, I recommend you using the "DB Browser for SQLite" its free and won't take long to download and install (3 to 5 minutes), after you finished installing it, open the DB Browser for SQLite, and then click the "Open Database" at the top left, and then select the "database.sqlite" file on this directory "..\cinema-sea-fullstack\database\database.sqlite". After that you can see a lot of Tables appearing, and then right click the "users" table and select "Modify Table".
-After that, UNCHECK the non-null constraint (NN) for EMAIL field. Once you've done, click "OK" and you're ready to go :D
+But, if you guys got an error like this, it is fine, just continue the step. It is happening because its a migration file that got deleted and then I restored it again from recycle bin, it is okay nothing wrong keep going !
+```
+ Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000]: General error: 1 duplicate column name: age (Connection: sqlite, SQL: alter table "users" add column "age" integer not null)
+```
+
+9. After that, please download a software to look inside the database, I recommend you using the "DB Browser for SQLite" its free and won't take long to download and install (3 to 5 minutes), after you finished installing it, open the DB Browser for SQLite, and then click the "Open Database" at the top left, and then select the "database.sqlite" file on this directory "..\cinema-sea-fullstack\database\database.sqlite". After that you can see a lot of Tables appearing :D
 
 10. Back to the terminal, Run the Laravel backend service for your backend server
 ```
