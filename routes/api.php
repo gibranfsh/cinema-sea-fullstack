@@ -29,10 +29,12 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/seats', [SeatsController::class, 'store']);
-Route::get('/seats/{movie_id}', [SeatsController::class, 'index']);
-Route::put('/seats/{movie_id}', [SeatsController::class, 'update']);
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('/seats', [SeatsController::class, 'store']);
+    Route::get('/seats/{movie_id}', [SeatsController::class, 'index']);
+    Route::put('/seats/{movie_id}', [SeatsController::class, 'update']);
 
-Route::post('/tickets', [TicketController::class, 'store']);
-Route::get('/tickets/{user_id}', [TicketController::class, 'getByUserId']);
-Route::delete('/tickets/{id}', [TicketController::class, 'destroy']);
+    Route::post('/tickets', [TicketController::class, 'store']);
+    Route::get('/tickets/{user_id}', [TicketController::class, 'getByUserId']);
+    Route::delete('/tickets/{id}', [TicketController::class, 'destroy']);
+});

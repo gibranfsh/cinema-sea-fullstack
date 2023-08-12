@@ -49,7 +49,7 @@ const NavBar = () => {
           </li>
 
           <li>
-            <a href="/myticket">My Ticket</a>
+            <a href="/myticket">My Tickets</a>
           </li>
         </div>
 

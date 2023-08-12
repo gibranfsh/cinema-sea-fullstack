@@ -9,7 +9,8 @@ class Seats extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['movie_id', 'seat_array']; // Define the fillable attributes
+    
     protected $table = 'seats'; // Specify the table name
 
-    protected $fillable = ['movie_id', 'seat_array']; // Define the fillable attributes
 }

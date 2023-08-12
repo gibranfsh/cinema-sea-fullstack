@@ -3,14 +3,16 @@
     flex-direction: column;
     /* column : vertical */
     justify-content: space-between;
-    bottom: 0;
+    bottom: 1;
     width: 100%;
-    padding: 20px 70px;
+    padding: 20px 70px; /* top bottom left right */
     /* top right bottom left */
     height: 280px;
     color: #fff;
     line-height: 30px;
     background-color: var(--darkgreen-color);
+    /* make footer sticky to bottom */
+    position: absolute;
 }
 
 .content {
